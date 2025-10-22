@@ -1,0 +1,6 @@
+joblib
+numpy
+pandas
+matplotlib
+scikit-learn
+tensorflow>=2.10
