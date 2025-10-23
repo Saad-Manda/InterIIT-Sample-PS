@@ -52,7 +52,7 @@ This project implements a time series forecasting model that predicts stock pric
 **Direction Accuracy:** 40.00% 
 The accuracy score is defined as the percentage of times the model predicted the direction of the stock (Up or down) correctly.
 
-### 📁 Project Structure
+### Project Structure
 
 ```
 .
