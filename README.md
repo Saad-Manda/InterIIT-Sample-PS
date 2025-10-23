@@ -148,6 +148,13 @@ The model outputs:
 2. **Direction Prediction**: Binary classification (price up or down)
 3. **Performance Plots**: Visual comparison of predictions vs actual prices
 
+#### Reason for Low Accuracy
+- Limited dataset size and time range  
+- High volatility and noise in stock prices  
+- Model unable to capture long-term temporal dependencies  
+- Lack of external market indicators (news, sentiment, macro data)  
+- Overfitting on training data due to small validation set  
+
 ### Notes
 
 - The model is trained on normalized data (MinMaxScaler with range [0,1])
