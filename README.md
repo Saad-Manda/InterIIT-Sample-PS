@@ -28,7 +28,7 @@ docker build -t pathway-demo
 
 #### Run the Container
 ```bash
-docker run --rm -v ${PWD}:/app -w /app pathwaycom/pathway python sample.py 
+docker run --rm -v ${PWD}:/app -w /app pathwaycom/pathway python pathway_app.py 
 ```
 
 ### Expected Output
