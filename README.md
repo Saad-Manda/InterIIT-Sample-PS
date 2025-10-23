@@ -7,11 +7,12 @@ This project demonstrates running a Pathway application using Docker. Since Path
 
 
 ### File Structure
-. \
-├── pathway_app.py \
-├── Dockerfile \
+```
+.
+├── pathway_app.py
+├── Dockerfile
 └── requirements.txt
-
+```
 
 ### How to Run
 
@@ -40,19 +41,18 @@ docker run --rm -v ${PWD}:/app -w /app pathwaycom/pathway python sample.py
 
 ## Task 2 - Real time AI-driven stock price prediction
 
-## 📊 Project Overview
+### Project Overview
 
 This project implements a time series forecasting model that predicts stock prices using historical data. The model uses a combination of LSTM (Long Short-Term Memory) and GRU (Gated Recurrent Unit) layers to capture temporal patterns in stock price movements.
 
-## 🎯 Model Performance
+### Model Performance
 
-![Model Performance](path/to/your/plot.png)
+<img width="989" height="590" alt="image" src="https://github.com/user-attachments/assets/38fb8e1e-811d-41dd-8023-1525855554d3" />
 
-**Direction Accuracy:** ~XX% (predicted price movement direction)
+**Direction Accuracy:** 40.00% 
+The accuracy score is defined as the percentage of times the model predicted the direction of the stock (Up or down) correctly.
 
-The model successfully predicts whether the stock price will go up or down compared to the previous day's price.
-
-## 📁 Project Structure
+### 📁 Project Structure
 
 ```
 .
@@ -61,52 +61,32 @@ The model successfully predicts whether the stock price will go up or down compa
 │   └── processed_data.npz      # Preprocessed training/testing data
 ├── models/
 │   ├── best_model.keras        # Trained LSTM-GRU model
-│   ├── scaler_X.pkl           # Feature scaler
-│   └── scaler_y.pkl           # Target scaler
+│   ├── scaler_X.pkl            # Feature scaler
+│   └── scaler_y.pkl            # Target scaler
 └── notebooks/
     ├── preprocess.ipynb        # Data preprocessing notebook
-    └── train.ipynb            # Model training notebook
+    └── train.ipynb             # Model training notebook
 ```
 
-## 🔧 Features
+###  Features
 
-### Input Features
+#### Input Features
 - **Average Price**: Mean of Open and Close prices
 - **Price Change**: Absolute difference between Close and Open
 - **Price Change Percentage**: Relative price change
 
-### Model Architecture
+#### Model Architecture
 - **Bidirectional LSTM Layer** (64 units) - Captures patterns in both directions
 - **GRU Layers** (64 and 32 units) - Efficient temporal processing
 - **Dropout Layers** - Prevents overfitting
 - **Dense Layers** - Final prediction layers
 
-### Technical Specifications
+#### Technical Specifications
 - **Window Size**: 30 time steps
 - **Train/Test Split**: 80/20
 - **Optimizer**: Adam with learning rate 5e-4
 - **Loss Function**: Mean Squared Error (MSE)
 - **Early Stopping**: Patience of 30 epochs
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-```bash
-pip install pandas numpy scikit-learn tensorflow matplotlib joblib
-```
-
-### Installation
-
-1. Clone the repository
-```bash
-git clone <your-repo-url>
-cd stock-price-prediction
-```
-
-2. Ensure your data file is in the correct location:
-   - Place your CSV file in `data/btc_historical.csv`
-   - CSV should have columns: `Date`, `Open`, `Close`
 
 ### Usage
 
@@ -122,6 +102,7 @@ This will:
 - Create windowed sequences
 - Generate technical features
 - Scale the data
+- Save the scalers to `models/scaler_X.pkl` and `models/scaler_Y.pkl`
 - Save processed data to `data/processed_data.npz`
 
 #### 2. Model Training
@@ -138,14 +119,14 @@ This will:
 - Save the best model to `models/best_model.keras`
 - Generate performance plots
 
-## 📈 Model Training Details
+### Model Training Details
 
-### Callbacks Used
+#### Callbacks Used
 - **EarlyStopping**: Stops training if validation loss doesn't improve for 30 epochs
 - **ReduceLROnPlateau**: Reduces learning rate by 50% if validation loss plateaus
 - **ModelCheckpoint**: Saves the best model based on validation loss
 
-### Hyperparameters
+#### Hyperparameters
 ```python
 EPOCHS = 200
 BATCH_SIZE = 32
@@ -154,65 +135,22 @@ SPLIT_RATIO = 0.8
 VALIDATION_SPLIT = 0.15
 ```
 
-## 📊 Evaluation Metrics
+### Evaluation Metrics
 
 - **Direction Accuracy**: Percentage of correct predictions for price movement direction (up/down)
 - **MSE Loss**: Mean squared error on validation set
 - **Visual Comparison**: Actual vs Predicted price plots
 
-## 🔍 Results Interpretation
+### Results Interpretation
 
 The model outputs:
 1. **Predicted Prices**: Continuous values for future stock prices
 2. **Direction Prediction**: Binary classification (price up or down)
 3. **Performance Plots**: Visual comparison of predictions vs actual prices
 
-## 🛠️ Customization
-
-### Changing the Window Size
-Edit in preprocessing:
-```python
-WINDOW_SIZE = 60  # Increase for longer historical context
-```
-
-### Modifying Model Architecture
-Edit in training notebook:
-```python
-# Add more layers or change units
-model.add(Bidirectional(LSTM(128, return_sequences=True)))
-model.add(GRU(64, return_sequences=True))
-```
-
-### Adding More Features
-Edit in preprocessing:
-```python
-df["moving_avg_7"] = df["avg_price"].rolling(window=7).mean()
-df["volatility"] = df["Close"].rolling(window=7).std()
-```
-
-## 📝 Notes
+### Notes
 
 - The model is trained on normalized data (MinMaxScaler with range [0,1])
 - Separate scalers are used for features (X) and target (y)
 - The model predicts the next time step's average price
 - Direction accuracy is often more reliable than absolute price prediction
-
-## ⚠️ Disclaimer
-
-This model is for educational purposes only. Stock price prediction is extremely challenging and past performance does not guarantee future results. Do not use this model for actual trading decisions without thorough validation and risk assessment.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is open source and available under the MIT License.
-
-## 📧 Contact
-
-For questions or feedback, please open an issue in the repository.
-
----
-
-**Last Updated**: October 2025
